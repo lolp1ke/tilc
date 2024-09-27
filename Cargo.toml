@@ -1,11 +1,12 @@
 [workspace]
-members = ["compiler/tilc"]
+members = ["compiler/tilc", "compiler/tilc_lexer"]
 default-members = ["compiler/tilc"]
 resolver = "2"
 
 
 [workspace.dependencies]
 # Internal packages
+tilc_lexer = { path = "compiler/tilc_lexer" }
 
 
 # External crates
