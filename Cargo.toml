@@ -1,0 +1,11 @@
+[workspace]
+members = ["compiler/tilc"]
+default-members = ["compiler/tilc"]
+resolver = "2"
+
+
+[workspace.dependencies]
+# Internal packages
+
+
+# External crates

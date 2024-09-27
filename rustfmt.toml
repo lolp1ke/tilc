@@ -1,0 +1,18 @@
+indent_style = "Block"
+hard_tabs = false
+tab_spaces = 2
+max_width = 100
+
+
+reorder_imports = true
+
+
+blank_lines_lower_bound = 0
+blank_lines_upper_bound = 2
+
+
+brace_style = "PreferSameLine"
+control_brace_style = "AlwaysSameLine"
+
+
+format_code_in_doc_comments = true
