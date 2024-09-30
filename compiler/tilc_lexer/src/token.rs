@@ -1,5 +1,18 @@
 //! Token túriniń jeńildetilgen nusqasy
 
+
+// Temporary version of the Token before parsing
+pub struct Token {
+  kind: TokenKind,
+  pos: usize,
+}
+impl Token {
+  pub fn new(kind: TokenKind, pos: usize) -> Self {
+    return Self { kind, pos };
+  }
+}
+
+
 pub enum TokenKind {
   /// Bos oryn tańbasy
   Whitespace,
@@ -67,12 +80,12 @@ pub enum TokenKind {
   Gt,
   /// -
   Minus,
+  /// +
+  Plus,
   /// &
   And,
   /// |
   Or,
-  /// +
-  Plus,
   /// *
   Star,
   /// /
@@ -85,25 +98,25 @@ pub enum TokenKind {
   /// Belgisiz belgi, mysaly: '№'
   Unknown,
   /// Faıldyń sońy
-  EOF,
+  Eof,
 }
+
 
 // TODO: create own prefix style
 /// Sannyń negizi
 pub enum Base {
-  /// Munyń prefıksi: "0b"
+  /// Munyń prefıksi: "0e"
   Binary,
 
-  /// Munyń prefıksi: "0o"
+  /// Munyń prefıksi: "0s"
   Octal,
 
   /// Munyń prefıksi joq
   Decimal,
 
-  /// Munyń prefıksi: "0x"
+  /// Munyń prefıksi: "0o"
   Hexidecimal,
 }
-
 pub enum LiteralKind {
   /// Bútin san
   Int {
