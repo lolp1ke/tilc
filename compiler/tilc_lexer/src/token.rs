@@ -27,7 +27,7 @@ pub enum TokenKind {
   Identifier,
   /// Shıki Identıfıkator, mysaly: s#ainymaly
   ///
-  /// s tańbasy "Shıkı"degendi bildiredi
+  /// s tańbasy "Shıkı" degendi bildiredi
   RawIdentifier,
   /// Jaramsyz Identıfıkator
   InvalidIdentifier,
@@ -104,6 +104,7 @@ pub enum TokenKind {
 
 // TODO: create own prefix style
 /// Sannyń negizi
+#[derive(Debug, PartialEq)]
 pub enum Base {
   /// Munyń prefıksi: "0e"
   Binary,
@@ -117,12 +118,15 @@ pub enum Base {
   /// Munyń prefıksi: "0o"
   Hexidecimal,
 }
+#[derive(Debug, PartialEq)]
 pub enum LiteralKind {
   /// Bútin san
   Int {
     base: Base,
   },
-  Float,
+  Float {
+    base: Base,
+  },
   Char,
   Byte,
   String,
