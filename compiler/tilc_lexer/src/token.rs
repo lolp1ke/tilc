@@ -2,17 +2,19 @@
 
 
 // Temporary version of the Token before parsing
+#[derive(Debug, PartialEq)]
 pub struct Token {
   kind: TokenKind,
-  pos: usize,
+  len: usize,
 }
 impl Token {
-  pub fn new(kind: TokenKind, pos: usize) -> Self {
-    return Self { kind, pos };
+  pub fn new(kind: TokenKind, len: usize) -> Self {
+    return Self { kind, len };
   }
 }
 
 
+#[derive(Debug, PartialEq)]
 pub enum TokenKind {
   /// Bos oryn tańbasy
   Whitespace,
@@ -34,7 +36,7 @@ pub enum TokenKind {
 
   // TODO: choose more suitable definition for the "Literal"
   /// Sózbe-Sóz
-  Literal { kind: LiteralKind },
+  Literal { kind: LiteralKind, suffix_pos: u32 },
 
   /// Ómir súrý uzaqtyǵy
   Lifetime,
