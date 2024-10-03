@@ -92,6 +92,9 @@ impl<'a> Lexer<'a> {
   fn raw_identifier(&mut self) -> TokenKind {
     todo!();
   }
+  fn raw_string(&mut self) -> TokenKind {
+    todo!();
+  }
   fn is_digit(&mut self) -> bool {
     let mut containt_digits: bool = false;
     loop {
@@ -185,7 +188,7 @@ impl<'a> Lexer<'a> {
 
       RAW_CHAR => match (self.peek(), self.nth(2)) {
         ('#', char2) if is_identifier_start(char2) => self.raw_identifier(),
-        ('#', _) => todo!(),
+        ('#', _) | ('\'', _) => self.raw_string(),
 
         _ => self.identifier(),
       },
