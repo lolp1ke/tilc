@@ -2,7 +2,7 @@ use std::str::Chars;
 
 use crate::token::{
   Base, LiteralKind, Token,
-  TokenKind::{self, *},
+  TokenKind::{self},
 };
 
 
@@ -170,6 +170,8 @@ impl<'a> Lexer<'a> {
 
 
   fn char_to_token(&mut self) -> Token {
+    use TokenKind::*;
+
     let current_char: char = match self.step() {
       '\0' => return Token::new(Eof, 0),
       char => char,
@@ -183,12 +185,12 @@ impl<'a> Lexer<'a> {
         '/' => self.line_comment(),
         '*' => self.block_comment(),
 
-        _ => TokenKind::Slash,
+        _ => Slash,
       },
 
       RAW_CHAR => match (self.peek(), self.nth(2)) {
         ('#', char2) if is_identifier_start(char2) => self.raw_identifier(),
-        ('#', _) | ('\'', _) => self.raw_string(),
+        ('#', '\"') => self.raw_string(),
 
         _ => self.identifier(),
       },
@@ -201,7 +203,7 @@ impl<'a> Lexer<'a> {
         // Consumes suffix if applicable
         self.consume(is_identifier);
 
-        TokenKind::Literal { kind, suffix_pos }
+        Literal { kind, suffix_pos }
       }
 
       '\'' => self.char_literal_or_lifetime(),
